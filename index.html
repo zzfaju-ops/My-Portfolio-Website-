@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe Faju | Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --light-cream: #FFFEF9;
+            --green: #2D5016;
+            --light-green: #4A7C2C;
+            --accent-green: #6B9F3E;
+            --text-dark: #2C3E1F;
+            --text-light: #5A6B4D;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: var(--green);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: var(--cream);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--green) 100%);
+            color: var(--cream);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-image-container {
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--cream);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 1.8em;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--light-cream);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--cream);
+            color: var(--green);
+        }
+
+        .btn-primary:hover {
+            background: var(--light-cream);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 2px solid var(--cream);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cream);
+            color: var(--green);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: var(--green);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card.featured {
+            border: 3px solid var(--accent-green);
+            background: linear-gradient(135deg, rgba(107, 159, 62, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        .project-title {
+            color: var(--green);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .project-type {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: var(--cream);
+            color: var(--green);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: var(--green);
+            color: var(--cream);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 1.3em;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+
+        #about {
+            background: var(--light-cream);
+        }
+
+        #projects {
+            background: var(--cream);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">ZF</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-image-container">
+            <img src="headshot.jpeg" alt="Zoe Faju" class="hero-image">
+        </div>
+        <h1>Zoe Faju</h1>
+        <h2>Software Engineer</h2>
+        <p>Entry-level software engineer passionate about building innovative solutions with expertise in distributed systems, mobile development, and full-stack technologies.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>Hello! I'm Zoe Faju, a passionate software engineer based in Marietta, GA. I'm currently completing my Bachelor's degree in Computer Science at Kennesaw State University, with an expected graduation in December 2025.</p>
+            <p>My journey in software development has led me to work on diverse projects ranging from distributed systems to mobile applications to AI-powered systems. I thrive in collaborative environments and have experience working with Agile methodologies, leading development teams, and implementing cutting-edge technologies.</p>
+            <p>I'm particularly interested in system design, distributed computing, mobile development, and creating scalable applications that solve real-world problems.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C / C#</li>
+                        <li>JavaScript</li>
+                        <li>Dart / Swift</li>
+                        <li>SQL / R</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>Flask / React</li>
+                        <li>Flutter</li>
+                        <li>Git / CI/CD</li>
+                        <li>SQLite / PostgreSQL</li>
+                        <li>RESTful APIs</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <ul>
+                        <li>Distributed Systems</li>
+                        <li>System Design</li>
+                        <li>Mobile Development</li>
+                        <li>AI/ML</li>
+                        <li>Database Optimization</li>
+                        <li>Agile Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- NEW: Enterprise System Monitor -->
+            <div class="project-card featured">
+                <div class="project-type">Individual Project</div>
+                <h3 class="project-title">Enterprise System Monitor</h3>
+                <p class="project-description">Production-grade distributed system monitoring platform with real-time metrics collection from 5+ microservices. Implements SRE golden signals methodology with intelligent alerting, thread-safe operations, and interactive visualization dashboard.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">Plotly.js</span>
+                    <span class="tech-tag">Threading</span>
+                    <span class="tech-tag">System Design</span>
+                </div>
+            </div>
+
+            <!-- NEW: Java RMI Election System -->
+            <div class="project-card featured">
+                <div class="project-type">Individual Project</div>
+                <h3 class="project-title">Java RMI Election System</h3>
+                <p class="project-description">Distributed client-server election application using Java RMI with thread-safe vote handling and registry-based service discovery. Demonstrates understanding of distributed computing, remote method invocation, and concurrent operations.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">RMI</span>
+                    <span class="tech-tag">Distributed Systems</span>
+                    <span class="tech-tag">Multithreading</span>
+                    <span class="tech-tag">Client-Server</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Team Project</div>
+                <h3 class="project-title">Mobile Budget Application</h3>
+                <p class="project-description">Collaborated with 4 developers using Agile sprints to create cross-platform budget app serving 50+ users with CI/CD pipeline, Plaid API integration, and Flutter/Dart UI.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">Plaid API</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">Agile</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Team Lead</div>
+                <h3 class="project-title">Pizza Company Mobile App</h3>
+                <p class="project-description">Led 3 developers using Agile Scrum to build mobile ordering application, improving efficiency by 34% and reducing order time from 8 to 5 minutes.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Agile Scrum</span>
+                    <span class="tech-tag">Mobile Dev</span>
+                    <span class="tech-tag">Team Leadership</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Research Project</div>
+                <h3 class="project-title">AI-Powered Closet Organization</h3>
+                <p class="project-description">Conducted research on AI optimization applying state-space search and goal-oriented algorithms to solve NP-complete closet organization problems.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">AI/ML</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">State-space Search</span>
+                    <span class="tech-tag">Optimization</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Systems Programming</div>
+                <h3 class="project-title">File System Simulator</h3>
+                <p class="project-description">Implemented multi-threaded file system simulator in C, showcasing concurrent programming skills and understanding of operating system concepts.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">C</span>
+                    <span class="tech-tag">Multi-threading</span>
+                    <span class="tech-tag">OS Concepts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="about-content">
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+                Interested in working together or have questions about my projects?
+            </p>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="mailto:zsfaju@hotmail.com" class="btn btn-primary">Email Me</a>
+                <a href="https://linkedin.com/in/zoe-faju-9b57a329" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/zzfaju-ops" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Zoe Faju. All rights reserved.</p>
+        <p>Built with passion for innovation and clean code.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
